@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Box, Text, SimpleGrid, Icon, Heading, Link } from "@chakra-ui/react";
+import { Box, SimpleGrid, Icon, Heading, Link } from "@chakra-ui/react";
 import {
   AiOutlineInfoCircle,
   AiOutlineFundProjectionScreen,

@@ -1,6 +1,5 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
-import NavBar from "./components/NavBar";
 import { Navigation } from "./navigation";
 import TemplateProvider from "./providers/TemplateProvider";
 import reportWebVitals from "./reportWebVitals";
