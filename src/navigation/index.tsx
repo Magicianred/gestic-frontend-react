@@ -6,11 +6,11 @@ import {
   BrowserRouter as Router,
   useHistory,
 } from "react-router-dom";
-import { useApp } from "../providers/AppProvider";
+import { useTemplate } from "../providers/TemplateProvider";
 import { routes } from "./routes";
 
 export const Navigation = () => {
-  const context = useApp();
+  const context = useTemplate();
 
   return (
     <Router>

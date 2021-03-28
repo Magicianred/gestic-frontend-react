@@ -1,14 +1,15 @@
 import * as React from "react";
 import ReactDOM from "react-dom";
+import NavBar from "./components/NavBar";
 import { Navigation } from "./navigation";
-import AppProvider from "./providers/AppProvider";
+import TemplateProvider from "./providers/TemplateProvider";
 import reportWebVitals from "./reportWebVitals";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
-  <AppProvider>
+  <TemplateProvider>
     <Navigation />
-  </AppProvider>,
+  </TemplateProvider>,
   document.getElementById("root")
 );
 
