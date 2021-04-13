@@ -1,15 +1,15 @@
-import * as React from "react";
-import ReactDOM from "react-dom";
-import { Navigation } from "./navigation";
-import TemplateProvider from "./providers/TemplateProvider";
-import reportWebVitals from "./reportWebVitals";
-import * as serviceWorker from "./serviceWorker";
+import * as React from 'react';
+import ReactDOM from 'react-dom';
+import { Navigation } from './navigation';
+import TemplateProvider from './providers/TemplateProvider';
+import reportWebVitals from './reportWebVitals';
+import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <TemplateProvider>
     <Navigation />
   </TemplateProvider>,
-  document.getElementById("root")
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change

@@ -1,13 +1,7 @@
-import React from "react";
-import {
-  Redirect,
-  Route,
-  Switch,
-  BrowserRouter as Router,
-  useHistory,
-} from "react-router-dom";
-import { useTemplate } from "../providers/TemplateProvider";
-import { routes } from "./routes";
+import React from 'react';
+import { Redirect, Route, Switch, BrowserRouter as Router, useHistory } from 'react-router-dom';
+import { useTemplate } from '../providers/TemplateProvider';
+import { routes } from './routes';
 
 export const Navigation = () => {
   const context = useTemplate();
@@ -15,24 +9,12 @@ export const Navigation = () => {
   return (
     <Router>
       <Switch>
-        {routes.map((route) =>
+        {routes.map(route =>
           route.private ? (
-            <PrivateRoute
-              key={route.path}
-              path={route.path}
-              exact
-              component={route.component}
-              context={context}
-            />
+            <PrivateRoute key={route.path} path={route.path} exact component={route.component} context={context} />
           ) : (
-            <PublicRoute
-              key={route.path}
-              path={route.path}
-              exact
-              component={route.component}
-              context={context}
-            />
-          )
+            <PublicRoute key={route.path} path={route.path} exact component={route.component} context={context} />
+          ),
         )}
         <Redirect to="/" exact />
       </Switch>
@@ -46,13 +28,7 @@ function PrivateRoute({ component: Component, context, ...rest }) {
   return (
     <Route
       {...rest}
-      render={(props) =>
-        user ? (
-          <Component {...props} context={context} history={history} />
-        ) : (
-          <Redirect to="/login" />
-        )
-      }
+      render={props => (user ? <Component {...props} context={context} history={history} /> : <Redirect to="/login" />)}
     />
   );
 }
@@ -60,12 +36,5 @@ function PrivateRoute({ component: Component, context, ...rest }) {
 function PublicRoute({ component: Component, context, ...rest }) {
   const history = useHistory();
 
-  return (
-    <Route
-      {...rest}
-      render={(props) => (
-        <Component {...props} context={context} history={history} />
-      )}
-    />
-  );
+  return <Route {...rest} render={props => <Component {...props} context={context} history={history} />} />;
 }

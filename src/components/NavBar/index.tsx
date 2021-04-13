@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   Box,
   Link,
@@ -9,7 +9,7 @@ import {
   // MenuItem,
   // MenuList,
   Flex,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 // import { BiChevronDown } from "react-icons/bi";
 
 const NavBar = () => (

@@ -1,20 +1,11 @@
-import * as React from "react";
-import { Box, SimpleGrid, Icon, Heading, Link } from "@chakra-ui/react";
-import {
-  AiOutlineInfoCircle,
-  AiOutlineFundProjectionScreen,
-} from "react-icons/ai";
-import { BiGroup } from "react-icons/bi";
+import * as React from 'react';
+import { Box, SimpleGrid, Icon, Heading, Link } from '@chakra-ui/react';
+import { AiOutlineInfoCircle, AiOutlineFundProjectionScreen } from 'react-icons/ai';
+import { BiGroup } from 'react-icons/bi';
 
 const Dashboard = () => (
   <Box textAlign="center" fontSize="xl" p={12}>
-    <SimpleGrid
-      columns={[1, null, 3]}
-      minH="100%"
-      p={3}
-      spacing={4}
-      justifyItems="center"
-    >
+    <SimpleGrid columns={[1, null, 3]} minH="100%" p={3} spacing={4} justifyItems="center">
       <Link color="teal">
         <Box
           border="1px"

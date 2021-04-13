@@ -1,10 +1,10 @@
-import Dashboard from '../pages/Dashboard'
+import Dashboard from '../pages/Dashboard';
 
 export const routes = [
   {
     path: '/',
     component: Dashboard,
-    private: false
+    private: false,
   },
   // {
   //   path: '/conta',
@@ -16,4 +16,4 @@ export const routes = [
   //   component: ,
   //   private: true
   // },
-]
+];
