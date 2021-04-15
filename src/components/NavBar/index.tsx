@@ -1,22 +1,14 @@
 import * as React from 'react';
-import {
-  Box,
-  Link,
-  // Button,
-  // Menu,
-  // MenuButton,
-  // MenuDivider,
-  // MenuItem,
-  // MenuList,
-  Flex,
-} from '@chakra-ui/react';
-// import { BiChevronDown } from "react-icons/bi";
+import { Box, Link, Flex, useMediaQuery } from '@chakra-ui/react';
 
-const NavBar = () => (
-  <Box bg="teal" color="white" p={4}>
-    <Flex gridGap={3}>
-      <Box>GestIC</Box>
-      {/* <Box>
+const NavBar = () => {
+  const [isLargerThan768] = useMediaQuery('(max-width: 768px)');
+
+  return (
+    <Box w="100%" bg="teal" zIndex="3" color="white" p={4} position={!isLargerThan768 ? 'initial' : 'fixed'}>
+      <Flex gridGap={3}>
+        <Box>GestIC</Box>
+        {/* <Box>
         <Menu>
           <MenuButton as={Button} rightIcon={<BiChevronDown />}>
             Nome
@@ -30,17 +22,24 @@ const NavBar = () => (
           </MenuList>
         </Menu>
       </Box> */}
-      <Box>
-        <Link>Informativos</Link>
-      </Box>
-      <Box>
-        <Link>Projetos Ativos</Link>
-      </Box>
-      <Box>
-        <Link>Grupos</Link>
-      </Box>
-    </Flex>
-  </Box>
-);
+        <Box>
+          <Link>Informativos</Link>
+        </Box>
+        <Box>
+          <Link>Projetos Ativos</Link>
+        </Box>
+        <Box>
+          <Link>Grupos</Link>
+        </Box>
+        <Box>
+          <Link>Ofertas de Disciplina</Link>
+        </Box>
+        <Box>
+          <Link>Projeto pedagógico</Link>
+        </Box>
+      </Flex>
+    </Box>
+  );
+};
 
 export default NavBar;
