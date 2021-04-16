@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { Box, SimpleGrid, Icon, Heading, Link, useMediaQuery } from '@chakra-ui/react';
+import { Box, SimpleGrid, Icon, Heading, useMediaQuery } from '@chakra-ui/react';
 import { AiOutlineInfoCircle, AiOutlineFundProjectionScreen, AiOutlineUnorderedList } from 'react-icons/ai';
 import { BiGroup } from 'react-icons/bi';
 import { IoMdSchool } from 'react-icons/io';
 import Informative from '../../components/Informative';
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+
+const StyledHeading = styled(Heading)`
+  &:hover{
+    text-decoration: underline;
+  }
+`
 
 const Dashboard = () => {
   const [isLargerThan766] = useMediaQuery('(max-width: 766px)');
@@ -15,11 +23,12 @@ const Dashboard = () => {
         {!isLargerThan766 && (
           <Box w="70%">
             <Link
-              color="teal"
-              // _hover={{
-              //   backgroundColor: 'blue',
-              //   color: 'white',
-              // }}
+              style={{ color: "teal" }}
+              to="/projetos-ativos"
+            // _hover={{
+            //   backgroundColor: 'blue',
+            //   color: 'white',
+            // }}
             >
               <Box
                 border="1px"
@@ -33,12 +42,14 @@ const Dashboard = () => {
                 mb={2}
               >
                 <Icon as={AiOutlineFundProjectionScreen} fontSize="2rem" mr={2} />
-                <Heading fontSize="md" textTransform="uppercase">
+                <StyledHeading fontSize="md" textTransform="uppercase">
                   Projetos Ativos
-                </Heading>
+                </StyledHeading>
               </Box>
             </Link>
-            <Link color="teal">
+            <Link
+              style={{ color: "teal" }}
+            >
               <Box
                 border="1px"
                 p={4}
@@ -51,17 +62,17 @@ const Dashboard = () => {
                 mb={2}
               >
                 <Icon as={BiGroup} fontSize="2rem" mr={2} />
-                <Heading fontSize="md" textTransform="uppercase">
+                <StyledHeading fontSize="md" textTransform="uppercase">
                   Grupos
-                </Heading>
+                </StyledHeading>
               </Box>
             </Link>
             <Link
-              color="teal"
-              // _hover={{
-              //   backgroundColor: 'blue',
-              //   color: 'white',
-              // }}
+              style={{ color: "teal" }}
+            // _hover={{
+            //   backgroundColor: 'blue',
+            //   color: 'white',
+            // }}
             >
               <Box
                 border="1px"
@@ -75,17 +86,17 @@ const Dashboard = () => {
                 mb={2}
               >
                 <Icon as={AiOutlineUnorderedList} fontSize="2rem" mr={2} />
-                <Heading fontSize="md" textTransform="uppercase">
+                <StyledHeading fontSize="md" textTransform="uppercase">
                   Ofertas de disciplina
-                </Heading>
+                </StyledHeading>
               </Box>
             </Link>
             <Link
-              color="teal"
-              // _hover={{
-                //   backgroundColor: 'blue',
-              //   color: 'white',
-              // }}
+              style={{ color: "teal" }}
+            // _hover={{
+            //   backgroundColor: 'blue',
+            //   color: 'white',
+            // }}
             >
               <Box
                 border="1px"
@@ -99,9 +110,9 @@ const Dashboard = () => {
                 mb={2}
               >
                 <Icon as={IoMdSchool} fontSize="2rem" mr={2} />
-                <Heading fontSize="md" textTransform="uppercase">
+                <StyledHeading fontSize="md" textTransform="uppercase">
                   Projeto Pedagógico
-                </Heading>
+                </StyledHeading>
               </Box>
             </Link>
           </Box>

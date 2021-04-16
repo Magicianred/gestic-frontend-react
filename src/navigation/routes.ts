@@ -1,4 +1,5 @@
 import Dashboard from '../pages/Dashboard';
+import ProjetosAtivos from '../pages/Projetos-Ativos'
 
 export const routes = [
   {
@@ -6,6 +7,11 @@ export const routes = [
     component: Dashboard,
     private: false,
   },
+  {
+    path: '/projetos-ativos',
+    component: ProjetosAtivos,
+    private: false
+  }
   // {
   //   path: '/conta',
   //   component: ,

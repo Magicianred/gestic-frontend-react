@@ -4,6 +4,7 @@ import { Navigation } from './navigation';
 import TemplateProvider from './providers/TemplateProvider';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import "antd/dist/antd.css";
 
 ReactDOM.render(
   <TemplateProvider>
