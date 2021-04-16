@@ -1,4 +1,5 @@
 import Dashboard from '../pages/Dashboard';
+import Login from '../pages/SignIn';
 
 export const routes = [
   {
@@ -6,11 +7,12 @@ export const routes = [
     component: Dashboard,
     private: false,
   },
-  // {
-  //   path: '/conta',
-  //   component: ,
-  //   private: true
-  // },
+  {
+    path: '/login',
+    component: Login,
+    private: false,
+    hasNavBar: false,
+  },
   // {
   //   path: '/perfil',
   //   component: ,
