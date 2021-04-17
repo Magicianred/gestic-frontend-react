@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route, Switch, BrowserRouter as Router, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import { routes } from './routes';
 import { useAuth } from '../providers/AuthProvider';
 
@@ -7,18 +7,16 @@ export const Navigation = () => {
   const context = useAuth();
 
   return (
-    <Router>
-      <Switch>
-        {routes.map(route =>
-          route.private ? (
-            <PrivateRoute key={route.path} path={route.path} exact component={route.component} context={context} />
-          ) : (
-            <PublicRoute key={route.path} path={route.path} exact component={route.component} context={context} />
-          ),
-        )}
-        <Redirect to="/" exact />
-      </Switch>
-    </Router>
+    <Switch>
+      {routes.map(route =>
+        route.private ? (
+          <PrivateRoute key={route.path} path={route.path} exact component={route.component} context={context} />
+        ) : (
+          <PublicRoute key={route.path} path={route.path} exact component={route.component} context={context} />
+        ),
+      )}
+      <Redirect to="/" exact />
+    </Switch>
   );
 };
 
