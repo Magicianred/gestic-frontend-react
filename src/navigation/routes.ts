@@ -1,17 +1,22 @@
 import Dashboard from '../pages/Dashboard';
-import Login from '../pages/SignIn';
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
 
 export const routes = [
   {
     path: '/',
     component: Dashboard,
-    private: false,
+    private: true,
   },
   {
     path: '/login',
-    component: Login,
+    component: SignIn,
     private: false,
-    hasNavBar: false,
+  },
+  {
+    path: '/register',
+    component: SignUp,
+    private: false,
   },
   // {
   //   path: '/perfil',

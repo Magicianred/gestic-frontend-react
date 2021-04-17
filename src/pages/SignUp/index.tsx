@@ -3,60 +3,59 @@ import { useForm, Controller } from 'react-hook-form';
 
 import { useHistory } from 'react-router-dom';
 
+import { useToast, Box, Button, Stack, Text, Link } from '@chakra-ui/react';
+
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
-import { Box, Button, Stack, Text, Link, useToast } from '@chakra-ui/react';
-
 import * as E from './styles';
 import { CustomInput } from '../../components/CustomInput';
-import { useAuth } from '../../providers/AuthProvider';
 
 const schema = yup.object().shape({
+  name: yup.string().required('Nome é obrigatório'),
+  surname: yup.string().required('Sobrenome é obrigatório'),
   email: yup.string().email('Digite um email válido').required('Email é obrigatório'),
   password: yup.string().required('Senha é obrigatória'),
 });
 
-type SignInFormInputs = {
+type SignUpFormInputs = {
+  name: string;
+  surname: string;
   email: string;
   password: string;
 };
 
-const SignIn = () => {
-  const { handleSubmit, formState, control } = useForm<SignInFormInputs>({
+const SignUp = () => {
+  const { handleSubmit, formState, control } = useForm<SignUpFormInputs>({
     reValidateMode: 'onBlur',
     resolver: yupResolver(schema),
   });
 
-  const {
-    push,
-    location: { state },
-  } = useHistory();
+  const { push } = useHistory();
   const toast = useToast();
-  const { signIn } = useAuth();
 
   const { errors } = formState;
 
-  const onSubmit = async (data: SignInFormInputs) => {
+  const onSubmit = (data: SignUpFormInputs) => {
+    console.log(data);
     try {
-      const { email, password } = data;
-
-      await signIn({
-        email,
-        password,
-      });
-
+      // api.post()
+      //
       toast({
-        title: 'Login realizado com sucesso',
+        title: 'Cadastro realizado com sucesso',
+        description: 'Você pode realizar o acesso agora',
         status: 'success',
         position: 'top-right',
         isClosable: true,
       });
 
-      push('/dashboard');
+      push('/login', {
+        email: data.email,
+        password: data.password,
+      });
     } catch {
       toast({
-        title: 'Ocorreu um erro ao fazer o login na plataforma',
+        title: 'Ocorreu um erro ao fazer o cadastro na plataforma',
         description: 'Tente novamente mais tarde',
         status: 'error',
         position: 'top-right',
@@ -71,9 +70,36 @@ const SignIn = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack spacing={2}>
             <Controller
+              name="name"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <CustomInput {...field} type="name" placeholder="Nome" errorMessage={errors?.name?.message} />
+              )}
+            />
+
+            <Box my={2} />
+
+            <Controller
+              name="surname"
+              control={control}
+              defaultValue=""
+              render={({ field }) => (
+                <CustomInput
+                  {...field}
+                  type="surname"
+                  placeholder="Sobrenome"
+                  errorMessage={errors?.surname?.message}
+                />
+              )}
+            />
+
+            <Box my={2} />
+
+            <Controller
               name="email"
               control={control}
-              defaultValue={state?.email}
+              defaultValue=""
               render={({ field }) => (
                 <CustomInput {...field} type="email" placeholder="Email" errorMessage={errors?.email?.message} />
               )}
@@ -84,7 +110,7 @@ const SignIn = () => {
             <Controller
               name="password"
               control={control}
-              defaultValue={state?.password}
+              defaultValue=""
               render={({ field }) => (
                 <CustomInput
                   {...field}
@@ -108,12 +134,12 @@ const SignIn = () => {
               alignSelf="end"
               disabled={Object.values(errors).length > 0}
             >
-              Entrar na plataforma
+              Realizar cadastro na plataforma
             </Button>
 
-            <Text mt={5}>Não possui conta?</Text>
-            <Link color="teal.500" href="/register" mt={2}>
-              Criar agora
+            <Text mt={5}>Já possui uma conta?</Text>
+            <Link color="teal.500" href="/login" mt={2}>
+              Fazer login agora
             </Link>
           </Box>
         </form>
@@ -122,4 +148,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

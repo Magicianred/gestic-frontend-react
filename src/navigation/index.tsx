@@ -1,10 +1,10 @@
 import React from 'react';
 import { Redirect, Route, Switch, BrowserRouter as Router, useHistory } from 'react-router-dom';
-import { useTemplate } from '../providers/TemplateProvider';
 import { routes } from './routes';
+import { useAuth } from '../providers/AuthProvider';
 
 export const Navigation = () => {
-  const context = useTemplate();
+  const context = useAuth();
 
   return (
     <Router>
@@ -25,16 +25,21 @@ export const Navigation = () => {
 function PrivateRoute({ component: Component, context, ...rest }) {
   const history = useHistory();
   const { user } = context;
-  return (
-    <Route
-      {...rest}
-      render={props => (user ? <Component {...props} context={context} history={history} /> : <Redirect to="/login" />)}
-    />
-  );
+
+  if (!user) {
+    return <Redirect to="/login" />;
+  }
+
+  return <Route {...rest} render={props => <Component {...props} context={context} history={history} />} />;
 }
 
 function PublicRoute({ component: Component, context, ...rest }) {
   const history = useHistory();
+  const { user } = context;
+
+  if (user) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return <Route {...rest} render={props => <Component {...props} context={context} history={history} />} />;
 }
