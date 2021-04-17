@@ -24,6 +24,10 @@
     "react-hooks"
   ],
   "rules": {
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types:": "off",
+    "spaced-comment": "off",
     "react/react-in-jsx-scope": "off",
     "prettier/prettier": "warn",
     "react/jsx-filename-extension": "off",
