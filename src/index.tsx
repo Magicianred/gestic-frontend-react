@@ -1,16 +1,10 @@
 import * as React from 'react';
 import ReactDOM from 'react-dom';
-import { Navigation } from './navigation';
-import TemplateProvider from './providers/TemplateProvider';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+import App from './App';
 
-ReactDOM.render(
-  <TemplateProvider>
-    <Navigation />
-  </TemplateProvider>,
-  document.getElementById('root'),
-);
+ReactDOM.render(<App />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

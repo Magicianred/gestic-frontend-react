@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { ChakraProvider, useMediaQuery } from '@chakra-ui/react';
+import React, { useState } from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
 import theme from '../../styles/theme';
 
 interface TemplateProviderI {
@@ -9,18 +9,8 @@ interface TemplateProviderI {
 export const TemplateContext = React.createContext({});
 
 function TemplateProvider({ children }: TemplateProviderI) {
-  const [user, setUser] = useState({
-    id: '',
-    email: '',
-  });
-
   return (
-    <TemplateContext.Provider
-      value={{
-        user,
-        setUser,
-      }}
-    >
+    <TemplateContext.Provider value={{}}>
       <ChakraProvider theme={theme}>
         <div>{children}</div>
       </ChakraProvider>
