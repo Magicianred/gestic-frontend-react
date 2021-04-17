@@ -26,18 +26,20 @@ function PrivateRoute({ component: Component, context, ...rest }) {
   const history = useHistory();
   const { user } = context;
 
-  console.log('user => ', user);
+  if (!user) {
+    return <Redirect to="/login" />;
+  }
 
-  return (
-    <Route
-      {...rest}
-      render={props => (user ? <Component {...props} context={context} history={history} /> : <Redirect to="/login" />)}
-    />
-  );
+  return <Route {...rest} render={props => <Component {...props} context={context} history={history} />} />;
 }
 
 function PublicRoute({ component: Component, context, ...rest }) {
   const history = useHistory();
+  const { user } = context;
+
+  if (user) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return <Route {...rest} render={props => <Component {...props} context={context} history={history} />} />;
 }

@@ -41,10 +41,10 @@ const SignIn = () => {
     try {
       const { email, password } = data;
 
-      // await signIn({
-      //   email,
-      //   password,
-      // });
+      await signIn({
+        email,
+        password,
+      });
 
       toast({
         title: 'Login realizado com sucesso',
@@ -52,6 +52,8 @@ const SignIn = () => {
         position: 'top-right',
         isClosable: true,
       });
+
+      push('/dashboard');
     } catch {
       toast({
         title: 'Ocorreu um erro ao fazer o login na plataforma',

@@ -4,8 +4,8 @@ import { api } from '../../services/api';
 interface User {
   id: string;
   name: string;
+  surname: string;
   email: string;
-  avatar_url: string;
 }
 
 interface AuthState {
@@ -42,10 +42,22 @@ const AuthProvider: React.FC = ({ children }) => {
   });
 
   const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('sessions', {
-      email,
-      password,
-    });
+    // const response = await api.post('sessions', {
+    //   email,
+    //   password,
+    // });
+
+    const response = {
+      data: {
+        token: '@token:123',
+        user: {
+          id: 'user-id',
+          name: 'John',
+          surname: 'Doe',
+          email: 'johndoe@email.com',
+        },
+      },
+    };
 
     const { token, user } = response.data;
 
