@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, SimpleGrid, Icon, Heading, Link, useMediaQuery } from '@chakra-ui/react';
-import { AiOutlineInfoCircle, AiOutlineFundProjectionScreen, AiOutlineUnorderedList } from 'react-icons/ai';
+import { AiOutlineFundProjectionScreen, AiOutlineUnorderedList } from 'react-icons/ai';
 import { BiGroup } from 'react-icons/bi';
 import { IoMdSchool } from 'react-icons/io';
 import Informative from '../../components/Informative';
